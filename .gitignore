@@ -1,0 +1,9 @@
+node_modules/
+reports/
+odc-data/
+odc-reports/
+
+certbot/conf/
+certbot/www/
+
+.env
