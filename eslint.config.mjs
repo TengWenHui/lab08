@@ -2,6 +2,7 @@ import { defineConfig } from "eslint/config";
 import jestPlugin from "eslint-plugin-jest";
 import testingLibraryPlugin from "eslint-plugin-testing-library";
 import securityPlugin from "eslint-plugin-security";
+import securityNode from "eslint-plugin-security-node";
 import babelParser from "@babel/eslint-parser";
 
 export default defineConfig([
@@ -26,10 +27,12 @@ export default defineConfig([
 
     plugins: {
       security: securityPlugin,
+      "security-node": securityNode,
     },
 
     rules: {
       "security/detect-eval-with-expression": "error",
+      "security-node/detect-crlf": "error",
     },
   },
 
