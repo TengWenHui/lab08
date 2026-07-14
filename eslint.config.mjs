@@ -3,6 +3,7 @@ import jestPlugin from "eslint-plugin-jest";
 import testingLibraryPlugin from "eslint-plugin-testing-library";
 import securityPlugin from "eslint-plugin-security";
 import securityNode from "eslint-plugin-security-node";
+import eslintPluginNoUnsanitized from "eslint-plugin-no-unsanitized";
 import babelParser from "@babel/eslint-parser";
 
 export default defineConfig([
@@ -28,11 +29,14 @@ export default defineConfig([
     plugins: {
       security: securityPlugin,
       "security-node": securityNode,
+      "no-unsanitized": eslintPluginNoUnsanitized,
     },
 
     rules: {
       "security/detect-eval-with-expression": "error",
       "security-node/detect-crlf": "error",
+
+      ...eslintPluginNoUnsanitized.configs.recommended.rules,
     },
   },
 
@@ -47,6 +51,7 @@ export default defineConfig([
     rules: {
       ...jestPlugin.configs.recommended.rules,
       ...testingLibraryPlugin.configs.react.rules,
+
       "testing-library/await-async-events": "off",
     },
 
